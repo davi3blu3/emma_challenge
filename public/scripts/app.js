@@ -17,9 +17,30 @@ var InputForm = React.createClass({
 			text: ""
 		}
 	},
+	ajaxCall: function(url) {
+		$.ajax({
+            url: "http://" + url,
+            dataType: 'json',
+            type: 'GET',
+            success: function(data) {
+            	console.log(data);
+              // this.setState({data: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+              console.error(this.props.url, status, err.toString());
+            }.bind(this)
+          });
+	},
 	handleChange: function(event) {
 		// entering text enables Submit button
 		this.setState({text: event.target.value})
+	},
+	handleSubmit: function(event) {
+		event.preventDefault();
+		var urlInput = this.state.text;
+		if (!urlInput) { return; }
+		this.setState({text: ""});
+		this.ajaxCall(urlInput);
 	},
 	render: function() {
 		return (
@@ -27,9 +48,9 @@ var InputForm = React.createClass({
 	    		<label htmlFor="url">Please enter a URL:</label>
 	    		<div className="input-group">
 	    			<span className="input-group-addon" id="basic-addon3">http://</span>
-	      			<input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" onChange={this.handleChange}/>
+	      			<input type="text" className="form-control" id="basic-url" value={this.state.text} onChange={this.handleChange}/>
 	      			<span className="input-group-btn">
-	        			<button className="btn btn-primary" type="button" disabled={this.state.text.length === 0}>Submit</button>
+	        			<button className="btn btn-primary" type="button" disabled={this.state.text.length === 0} onClick={this.handleSubmit}>Submit</button>
 	      			</span>
 	    		</div>
 	  		</form>
