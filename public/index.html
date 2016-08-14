@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Link Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
+    <script type="text/babel" src="scripts/app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center title">Link Lookup</h1>
+      
+      <form class="well url-entry">
+        <label for="url">Please enter a URL:</label>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon3">http://</span>
+          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" onChange={this.handleChange}/>
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" disabled={this.state.text.length === 0}>Submit</button>
+          </span>
+        </div>
+      </form>
+      <br/>
+      <div class="well">
+        <h3 class="text-center">Links contained in {URL} markup</h3>
+        <ul class="list-group">
+          <li class="list-group-item">/react/favicon.ico</li>
+          <li class="list-group-item">https://facebook.github.io/react/feed.xml</li>
+          <li class="list-group-item">https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.csso</li>
+          <li class="list-group-item">/react/css/syntax.css</li>
+          <li class="list-group-item">/react/css/codemirror.css</li>
+          <li class="list-group-item">/react/css/react.css</li>
+          <li class="list-group-item">/react/index.html</li>
+          <li class="list-group-item">/react/docs/getting-started.html</li>
+        </ul>
+      </div>
+    </div>
+    
+
+  </body>
+</html>
