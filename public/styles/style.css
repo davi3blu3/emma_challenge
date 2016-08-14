@@ -9,3 +9,7 @@ body {
 .well {
   background: #cef;
 }
+
+li {
+	overflow: hidden;
+}
