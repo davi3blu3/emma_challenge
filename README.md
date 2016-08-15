@@ -1,4 +1,4 @@
-I'm Dave Harned, submitting my response to Emma Inc's Code Challenges, on 8/14/16.
+I'm Dave Harned, submitting my response to Emma Inc's Code Challenges, on 8/15/16.
 
 Challenge A)
 
@@ -12,8 +12,16 @@ The application must include a form with a single input for a valid URL. Submitt
 
 --------
 To run the code:
-1. Download the repository
-2. Run 'npm install' to initialize dependencies
+	1. Download the repository
+	2. Run 'npm install' to initialize dependencies
+
+To view Challenge A:
+	1. My function is found in ./validate.js, which can be imported to another file with "require('./validate.js)"
+	2. The function can be called with "validator.iterate(array)" where array is an array of URLs in string form.
+	3. Alternately, you can see the results of this function by running "mocha /tests/validate-test.js"
+	4. See line 81 of /test/validate-test.js to input a custom array, which can then be tested the same way.
+
+
 
 --------
 

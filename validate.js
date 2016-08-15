@@ -6,13 +6,14 @@ var https =  require('https');
 var validator = {
 
 	iterate: function(URLarray) {
-
-		// applies test to every URL in array
+		// applies networkTest method to every URL in array
 		var urlMap = URLarray.map(this.networkTest);
 
 		// waits until all promises have been returned from networkTest function
-		Promise.all(urlMap).then(function(results) {
+		return Promise.all(urlMap).then(function(results) {
 			var problemURLs = [];
+
+			// iterates through all networkTest results
 			for (var i = 0; i < results.length; i++ ) {
 
 				// check results for status codes other than 200
@@ -20,15 +21,10 @@ var validator = {
 					problemURLs.push(results[i]);
 				}
 			};
-			return problemURLs;
+
+			// return array of URLs with errors or non-200 codes
+			return Promise.resolve(problemURLs);
 		})	
-	},
-
-	formatTest: function(testUrl) {
-
-
-
-
 	},
 
 	networkTest: function(testUrl) {
@@ -63,13 +59,27 @@ var validator = {
 		});
 	}
 };
-validator.iterate(["http://www.google.com",
-	"http://www.yahoo.com",
-	"https://github.com",
-	"http://www.prodigy.net",
-	"http://www.starwars.com",
-	"http://www.homestarrunner.com",
-	"http://www.mtv.com"
-	]);
+
+//var promiseTest = 
+// validator.iterate([
+// 	"http://www.google.com",
+// 	"yourmom.com",
+// 	"http://www.yahoo.com",
+// 	"https://github.com",
+// 	"http://www.prodigy.net",
+// 	"http://www.starwars.com",
+// 	"http://www.|o|<ats.com",
+// 	"http://www.homestarrunner.com",
+// 	"http://www.mtv.com"
+// ]).then(function(results) {
+// 	console.log('promise returned!');
+// 	console.log(results);
+// 	console.log(typeof results);
+// 	console.log(results.length);
+// });
+
+//console.log(promiseTest);
+//console.log(typeof promiseTest);
+//console.log(promiseTest.length);
 
 module.exports = validator;
