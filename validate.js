@@ -1,6 +1,8 @@
-var url = require('url');
-var http = require('http');
+var url = 	 require('url');
+var http = 	 require('http');
+var https =  require('https');
 
+// create validator object to house url test methods
 var validator = {
 
 	formatTest: function(testUrl) {
@@ -14,36 +16,28 @@ var validator = {
 		var urlObj = url.parse(testUrl);
 		if(urlObj.protocol == undefined) { return "URL is missing a protocol like 'http'" };
 
-		// check if hostname contains '.'
-		var dot = new RegExp('.');
-		var dotFound = dot.test(urlObj.hostname);
-		if(!dotFound) { return "URL hostname not formatted correctly"};
-
-		// make an http request
-		// this.networkTest(testUrl)
-		// 	.then(function(response){
-		// 		console.log(response);
-		// 	})
-		// 	.catch(function(err){
-		// 		console.log(error);
-		// 	})
+		return "URL looks ok";
 	},
 
 	networkTest: function(testUrl) {
-		// return pending promise
-		return new Promise(function(resolve){
 
-			var request = http.get(testUrl, function(response){
-				if (response.statusCode < 200 || response.statusCode > 299) {
-					resolve(new Error('Failed to load page, status code: ' + response.statusCode))
-				} else {
-					resolve('Success');
-				};
+		return new Promise(function(resolve, reject) {
+
+			// match correct library with protocol
+			var proto = testUrl.startsWith('https') ? https : http;
+
+			// make http 'GET' request
+			var request = proto.get(testUrl, function(response) {
+				resolve([response.statusCode, testUrl]);
+			});
+
+			// even errors resolve promise, so map function will work
+			request.on('error', function(err) {
+				resolve(['Error connecting to page', testUrl]);
 			});
 		});
 	}
 };
 
-console.log(validator.formatTest('http://w2.ww.goo.asdgle.com/'));
 
 module.exports = validator;

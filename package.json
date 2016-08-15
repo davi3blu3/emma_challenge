@@ -26,6 +26,6 @@
   "homepage": "https://github.com/davi3blu3/emma_challenge#readme",
   "dependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
   }
 }
