@@ -13,29 +13,29 @@ describe('validator object', function() {
 	});
 });
 
-describe('formatTest method', function() {
+describe('networkTest method - URL issues', function() {
 	// Test 2 - detect illegal character
 	it('should accept URL, and return a message if it contains illegal characters', function() {
 		var expErr = "URL contains an illegal character";
 		var expSuc = "URL looks ok"
-		expect(validator.formatTest('http://www.go|ogle.com/')).to.eql(expErr);
-		expect(validator.formatTest('http://www.google.com/')).to.eql(expSuc);
+		expect(validator.networkTest('http://www.go|ogle.com/')).to.eql(expErr);
+		expect(validator.networkTest('http://www.google.com/')).to.eql(expSuc);
 	})
 
 	// Test 3 - detect missing protocol
 	it('should accept URL, and return a message if protocol is missing', function() {
 		var expErr = "URL is missing a protocol like 'http'";
-		expect(validator.formatTest('www.google.com/lolwut')).to.eql(expErr);
+		expect(validator.networkTest('www.google.com/lolwut')).to.eql(expErr);
 	});
 
 	// Test 4 - good URL should pass
 	it('should accept URL, and return a message that URL is OK', function() {
 		var expWin = "URL looks ok"
-		expect(validator.formatTest('http://www.google.com/')).to.eql(expWin);
+		expect(validator.networkTest('http://www.google.com/')).to.eql(expWin);
 	})	
 });
 
-describe('networkTest method', function() {
+describe('networkTest method - http call issues', function() {
 	// Test 5 - return string
 	it('clean URLs should return an array', function(done) {
 		var promiseTest = validator.networkTest('http://myemma.com').then(function(val) {
