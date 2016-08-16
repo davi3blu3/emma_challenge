@@ -17,19 +17,21 @@ var InputForm = React.createClass({
 			text: ""
 		}
 	},
-	ajaxCall: function(url) {
-		$.ajax({
-            url: "http://" + url,
-            dataType: 'json',
+	ajaxCall: function(urlInput) {
+
+        $.ajax({
+            url: 'http://localhost:3000/',
             type: 'GET',
-            success: function(data) {
-            	console.log(data);
-              // this.setState({data: data});
-            }.bind(this),
-            error: function(xhr, status, err) {
-              console.error(this.props.url, status, err.toString());
-            }.bind(this)
-          });
+            contentType: 'application/json',
+            data: urlInput,
+            success: function() {
+            	console.log('success!');
+            },
+            error: function() {
+            	console.log('error!');
+            }
+        });;
+
 	},
 	handleChange: function(event) {
 		// entering text enables Submit button

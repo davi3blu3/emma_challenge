@@ -25,7 +25,10 @@
   },
   "homepage": "https://github.com/davi3blu3/emma_challenge#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "chai": "^3.5.0",
-    "mocha": "^3.0.2",
+    "express": "^4.14.0",
+    "http-proxy": "^1.14.0",
+    "mocha": "^3.0.2"
   }
 }
