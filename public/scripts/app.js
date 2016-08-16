@@ -17,22 +17,6 @@ var InputForm = React.createClass({
 			text: ""
 		}
 	},
-	ajaxCall: function(urlInput) {
-
-        $.ajax({
-            url: 'http://localhost:3000/',
-            type: 'GET',
-            contentType: 'application/json',
-            data: urlInput,
-            success: function() {
-            	console.log('success!');
-            },
-            error: function() {
-            	console.log('error!');
-            }
-        });;
-
-	},
 	handleChange: function(event) {
 		// entering text enables Submit button
 		this.setState({text: event.target.value})
@@ -43,6 +27,26 @@ var InputForm = React.createClass({
 		if (!urlInput) { return; }
 		this.setState({text: ""});
 		this.ajaxCall(urlInput);
+	},
+	ajaxCall: function(urlInput) {
+        $.ajax({
+            url: 'http://localhost:3000/',
+            type: 'GET',
+            contentType: 'application/json',
+            data: urlInput,
+            success: function(data) {
+            	console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+	            console.log(xhr.status);
+	            console.log(thrownError);
+            }
+        });
+	},
+	processLinks: function(rawHtml) {
+			console.log('processlinks triggered!');
+			var hrefs = /(href=".*?)"/g;
+			var links = rawHtml.match(hrefs);
 	},
 	render: function() {
 		return (
