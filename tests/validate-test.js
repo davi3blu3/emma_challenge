@@ -73,8 +73,6 @@ describe('iterate through array of urls', function() {
 			"http://www.mtv.com"
 			]).then(function(val) {
 				expect(val).to.be.an('array');
-				expect(val.length).to.eql(4);
-				console.log(val);
 				done();
 			});
 			

@@ -17,11 +17,14 @@ To get started:
 
 To view Challenge A:
 	1. My function is found in ./validate.js, which can be imported to another file with "require('./validate.js)"
-	2. The function can be called with "validator.iterate(array)" where array is an array of URLs in string form.
+	2. UnComment block of code at line 65 in file, then run in console with "node validate.js".
 	3. Alternately, you can see the results of this function by running "mocha /tests/validate-test.js"
 	4. See line 81 of /test/validate-test.js to input a custom array, which can then be tested the same way.
 
-
+To view Challenge B:
+    1. run "node server.js" in console
+    2. open ./public/index.html in browser
+    3. input url in "www.example.com" format and click submit.
 
 --------
 

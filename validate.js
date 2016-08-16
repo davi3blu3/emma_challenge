@@ -60,6 +60,8 @@ var validator = {
 	}
 };
 
+// UnComment This Block to test with "node validate.js"
+
 //var promiseTest = 
 // validator.iterate([
 // 	"http://www.google.com",
@@ -72,14 +74,10 @@ var validator = {
 // 	"http://www.homestarrunner.com",
 // 	"http://www.mtv.com"
 // ]).then(function(results) {
-// 	console.log('promise returned!');
 // 	console.log(results);
-// 	console.log(typeof results);
-// 	console.log(results.length);
 // });
 
-//console.log(promiseTest);
-//console.log(typeof promiseTest);
-//console.log(promiseTest.length);
+
+
 
 module.exports = validator;
